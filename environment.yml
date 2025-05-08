@@ -5,3 +5,6 @@ dependencies:
   - bs4=*
   - snowflake-ml-python=*
   - snowflake.core=*
+  - trulens-connectors-snowflake=*
+  - trulens-core=*
+  - trulens-feedback=*
