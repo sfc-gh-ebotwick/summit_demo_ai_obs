@@ -17,10 +17,10 @@
 
 ### Snowflake AI Observability UI
 - Review and compare each application side-by-side to better understand
- - Model Quality
- - Retrieval Quality
- - Latency
- - Cost
+  - Model Quality
+  - Retrieval Quality
+  - Latency
+  - Cost
 - Consider which application would be the best candidate for production based on insights
 
 
