@@ -12,7 +12,16 @@
  - Define web search agent to retrieve context from docs.snowflake.com when local results are not relevant
  - Set up class with various agents and instrument for Evaluation and Tracing in Snowflake AI Observability
  - Instantiate multiple versions of the class for A/B testing
- - Pass prompts to applications and review cost/latency/quality of each application side-by-side
+ - Pass prompts to applications
+
+
+### Snowflake AI Observability UI
+- Review and compare each application side-by-side to better understand
+ - Model Quality
+ - Retrieval Quality
+ - Latency
+ - Cost
+- Consider which application would be the best candidate for production based on insights
 
 
 SETUP INSTRUCTIONS
