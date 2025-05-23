@@ -35,13 +35,13 @@ CREATE WAREHOUSE IF NOT EXISTS AI_OBS_WAREHOUSE WITH WAREHOUSE_SIZE='SMALL';
 --Create Stage
 CREATE STAGE IF NOT EXISTS DOCS ENCRYPTION = (TYPE = 'SNOWFLAKE_SSE' ) DIRECTORY = ( ENABLE = TRUE);
  
---Create network rule and api integration to install packages from pypi
+--Create network rule and api integration to pull data from docs.snowflake.com
 CREATE OR REPLACE NETWORK RULE snowflake_docs_network_rule
  MODE = EGRESS
  TYPE = HOST_PORT
  VALUE_LIST = ('docs.snowflake.com');
 
-  -- Create external access integration on top of network rule for pypi access
+  -- Create external access integration on top of network rule for snowflake docs web access
 CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION snowflake_docs_EAI
  ALLOWED_NETWORK_RULES = (snowflake_docs_network_rule)
  ENABLED = true;
@@ -73,6 +73,10 @@ CREATE OR REPLACE NOTEBOOK SUMMIT_AI_OBS_DEMO.DATA.AI_AGENT_OBSERVABILITY
 FROM '@SUMMIT_AI_OBS_DEMO.DATA.SUMMIT_AI_OBS_DEMO_GIT_REPO/branches/main/' 
 MAIN_FILE = 'AI_AGENT_OBSERVABILITY.ipynb' QUERY_WAREHOUSE = AI_OBS_WAREHOUSE
 IDLE_AUTO_SHUTDOWN_TIME_SECONDS = 3600;
+
+-- Enable external access integration for web search tool in AI Agent Noteobok
+alter NOTEBOOK SUMMIT_AI_OBS_DEMO.DATA.AI_AGENT_OBSERVABILITY set EXTERNAL_ACCESS_INTEGRATIONS = ( 'snowflake_docs_EAI' )
+
 ```
 
 
